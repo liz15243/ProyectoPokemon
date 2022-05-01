@@ -15,6 +15,9 @@ public class Main {
         paraTienda.add(pokebasica);
         miTienda.usuarioVender(pokebasica,1);
 
+        Baya fuerza = new Baya(20,4,"Fuerza","Fuerza","dar mas fuerza",20);
+        paraTienda.add(fuerza);
+        miTienda.usuarioVender(fuerza,2);
 
     }
 }

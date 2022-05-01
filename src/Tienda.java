@@ -61,12 +61,13 @@ public class Tienda {
             return false;
         } else {
             if (objeto.getClass() == Pokebola.class) {
-                double precioAnte= objeto.costo * cantidad;
-                System.out.println("Se te agrego a tu dinero: " + ( cantidad + precioAnte));
-
+                int cantidadFinalPoke= objeto.getCantidad() - cantidad;
+                System.out.println("Ahora cuentas con: " + cantidadFinalPoke + " " + objeto.getNombre());
+            }else if(objeto.getClass() == Baya.class ){
+                int cantidadFinalBaya= objeto.cantidad - cantidad;
+                System.out.println("Ahora cuentas con: " + cantidadFinalBaya + " " + objeto.getNombre());
             }
         }
-
 
         return false;
     }
