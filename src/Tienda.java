@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 public class Tienda {
-    //Atributos
-    //Nombre - String
-    //Objetos disponibles - ArrayList<Objetos>
 
     private String nombre;
     private ArrayList<Objeto> objetosDisponibles;
@@ -58,9 +55,11 @@ public class Tienda {
     }
 
     public boolean usuarioVender(Objeto objeto,int cantidad){
-     if (objetosDisponibles.){
+        if (objeto.getClass() == Pocion.class ){
+            System.out.println("No puedes vender pociones");
+            return false;
+        }
 
-     }
 
         return false;
     }
