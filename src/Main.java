@@ -10,7 +10,11 @@ public class Main {
         System.out.println(miTienda.usuarioComprar(30.3,1,0));
         miTienda.usuarioVender(pocion1,4);
 
-        ArrayList<Tienda> mio = new ArrayList<>();
+
+        Pokebola pokebasica = new Pokebola(20,5,"Pokebasica","basica",10);
+        paraTienda.add(pokebasica);
+        miTienda.usuarioVender(pokebasica,1);
+
 
     }
 }

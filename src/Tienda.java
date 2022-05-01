@@ -1,9 +1,10 @@
+
+
 import java.util.ArrayList;
 public class Tienda {
 
     private String nombre;
     private ArrayList<Objeto> objetosDisponibles;
-
 
 
     //Metodo
@@ -30,22 +31,22 @@ public class Tienda {
         this.objetosDisponibles = objetosDisponibles;
     }
 
-    public boolean usuarioComprar(double dinero, int cantidad, int indiceObjeto){
+    public boolean usuarioComprar(double dinero, int cantidad, int indiceObjeto) {
 
-        if(indiceObjeto > objetosDisponibles.size()){
+        if (indiceObjeto > objetosDisponibles.size()) {
             System.out.println("Error no existe ese objeto");
-        }else{
-            if(objetosDisponibles.get(indiceObjeto).cantidad >= cantidad){
+        } else {
+            if (objetosDisponibles.get(indiceObjeto).cantidad >= cantidad) {
                 double precioTotal = cantidad * objetosDisponibles.get(indiceObjeto).costo;
-                if(precioTotal >= dinero){
+                if (precioTotal >= dinero) {
                     System.out.println("Vendido");
                     return true;
-                }else{
+                } else {
                     System.out.println("No le alcanza, le faltan: " + (precioTotal - dinero));
                     return false;
                 }
 
-            }else{
+            } else {
                 System.out.println("No tenemos la cantidad solicitada");
                 return false;
             }
@@ -54,10 +55,16 @@ public class Tienda {
         return false;
     }
 
-    public boolean usuarioVender(Objeto objeto,int cantidad){
-        if (objeto.getClass() == Pocion.class ){
+    public boolean usuarioVender(Objeto objeto, int cantidad) {
+        if (objeto.getClass() == Pocion.class) {
             System.out.println("No puedes vender pociones");
             return false;
+        } else {
+            if (objeto.getClass() == Pokebola.class) {
+                double precioAnte= objeto.costo * cantidad;
+                System.out.println("Se te agrego a tu dinero: " + ( cantidad + precioAnte));
+
+            }
         }
 
 
@@ -65,10 +72,10 @@ public class Tienda {
     }
 
 
-    public void mostrarDisponibles(){
+    public void mostrarDisponibles() {
         System.out.println("Los objetos disponibles son: ");
-        int indice =1;
-        for(Objeto objeto:objetosDisponibles){
+        int indice = 1;
+        for (Objeto objeto : objetosDisponibles) {
             System.out.println(indice + " - ");
             System.out.println();
             indice++;
