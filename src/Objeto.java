@@ -1,7 +1,4 @@
-public class Objeto {
-    // Costo
-    // Cantidad
-    // Nombre
+public abstract class Objeto {
 
     protected double costo;
     protected int cantidad;
@@ -46,6 +43,7 @@ public class Objeto {
         this.nombre = nombre;
         this.tipo = tipo;
     }
+    public abstract boolean usar(Pokemon pokemon);
 
     @Override
     public String toString() {

@@ -27,6 +27,23 @@ public class Baya extends Objeto{
     }
 
     @Override
+    public boolean usar(Pokemon pokemon) {
+        if(this.efecto.equals("curacion")){
+            pokemon.setHp(pokemon.getHp()+20);
+            return true;
+        } else if(this.efecto.equals("fuerza")){
+            pokemon.getHabilidad().setAtaqueBase(pokemon.getHabilidad().getAtaqueBase()+20);
+            return true;
+        } else if(this.efecto.equals("velocidad")){
+            pokemon.setVelocidad(pokemon.getVelocidad()+20);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    @Override
     public String toString() {
         return "Baya{" +
                 "efecto='" + efecto + '\'' +

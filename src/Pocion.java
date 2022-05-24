@@ -1,6 +1,4 @@
 public class Pocion extends Objeto{
-    // Efecto
-    // Duracion
     private String efecto;
     private int duracion;
 
@@ -26,6 +24,23 @@ public class Pocion extends Objeto{
         this.duracion = duracion;
     }
 
+
+    @Override
+    public boolean usar(Pokemon pokemon) {
+        if(this.efecto.equals("curacion")){
+            pokemon.setHp(pokemon.getHp()+20);
+            return true;
+        } else if(this.efecto.equals("fuerza")){
+            pokemon.getHabilidad().setAtaqueBase(pokemon.getHabilidad().getAtaqueBase()+20);
+            return true;
+        } else if(this.efecto.equals("velocidad")){
+            pokemon.setVelocidad(pokemon.getVelocidad()+20);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return "Pocion{" +
@@ -38,10 +53,4 @@ public class Pocion extends Objeto{
                 '}';
     }
 
-    // Usar
-    // Si es curacion
-    // Aumentar 20 hp
-    // Si es de fuerza
-    // Aumentar ataque 20
-    // Aumentar velocidad 20
 }
