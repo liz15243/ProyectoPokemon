@@ -47,5 +47,15 @@ public class Objeto {
         this.tipo = tipo;
     }
 
+    @Override
+    public String toString() {
+        return "Objeto{" +
+                "costo=" + costo +
+                ", cantidad=" + cantidad +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
+
     //esta es una prueba
 }

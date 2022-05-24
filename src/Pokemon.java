@@ -62,4 +62,16 @@ public class Pokemon {
         this.debilContra = debilContra;
         this.fuerteContra = fuerteContra;
     }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "tipo='" + tipo + '\'' +
+                ", habilidad=" + habilidad +
+                ", hp=" + hp +
+                ", esLegendario=" + esLegendario +
+                ", debilContra='" + debilContra + '\'' +
+                ", fuerteContra='" + fuerteContra + '\'' +
+                '}';
+    }
 }

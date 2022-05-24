@@ -7,6 +7,7 @@ public class Main {
 
         Tienda miTienda= new Tienda("Mi tienda",paraTienda);
         miTienda.mostrarDisponibles();
+
         System.out.println(miTienda.usuarioComprar(30.3,1,0));
         miTienda.usuarioVender(pocion1,4);
 
@@ -18,6 +19,9 @@ public class Main {
         Baya fuerza = new Baya(20,4,"Fuerza","Fuerza","dar mas fuerza",20);
         paraTienda.add(fuerza);
         miTienda.usuarioVender(fuerza,2);
+
+
+
 
     }
 }

@@ -7,7 +7,17 @@ public class Pokebola extends Objeto{
         this.efectividad = efectividad;
     }
 
-    // Atrapar - retornar true/false
+    @Override
+    public String toString() {
+        return "Pokebola{" +
+                "costo=" + costo +
+                ", cantidad=" + cantidad +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", efectividad=" + efectividad +
+                '}';
+    }
+// Atrapar - retornar true/false
     // Revisar tipo pokebola
     // Si es PokebolaLegendario - 40 efectividad
 

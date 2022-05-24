@@ -82,4 +82,12 @@ public class Tienda {
             indice++;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Tienda{" +
+                "nombre='" + nombre + '\'' +
+                ", objetosDisponibles=" + objetosDisponibles +
+                '}';
+    }
 }

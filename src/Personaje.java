@@ -32,4 +32,13 @@ public class Personaje {
         this.nivel = nivel;
         this.genero = genero;
     }
+
+    @Override
+    public String toString() {
+        return "Personaje{" +
+                "nombre='" + nombre + '\'' +
+                ", nivel=" + nivel +
+                ", genero=" + genero +
+                '}';
+    }
 }

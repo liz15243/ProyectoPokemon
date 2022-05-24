@@ -132,6 +132,14 @@ public class Entrenador {
         return false;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Entrenador{" +
+                "region='" + region + '\'' +
+                ", PokemonMascota=" + PokemonMascota +
+                ", torneosGanados=" + torneosGanados +
+                ", Pokedex=" + Pokedex +
+                ", Mochila=" + Mochila +
+                '}';
+    }
 }

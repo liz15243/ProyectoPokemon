@@ -26,7 +26,18 @@ public class Baya extends Objeto{
         this.duracion = duracion;
     }
 
-    // Usar
+    @Override
+    public String toString() {
+        return "Baya{" +
+                "efecto='" + efecto + '\'' +
+                ", duracion=" + duracion +
+                ", costo=" + costo +
+                ", cantidad=" + cantidad +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
+// Usar
     // Si es curacion
     // Aumentar 20 hp
     // Si es de fuerza

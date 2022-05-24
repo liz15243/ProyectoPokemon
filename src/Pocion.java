@@ -25,6 +25,19 @@ public class Pocion extends Objeto{
         this.efecto = efecto;
         this.duracion = duracion;
     }
+
+    @Override
+    public String toString() {
+        return "Pocion{" +
+                "costo=" + costo +
+                ", cantidad=" + cantidad +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", efecto='" + efecto + '\'' +
+                ", duracion=" + duracion +
+                '}';
+    }
+
     // Usar
     // Si es curacion
     // Aumentar 20 hp
