@@ -85,12 +85,43 @@ public class Pokemon extends Personaje {
     }
 
     public boolean pelear(Pokemon pokemonContrario) {
+        if(this.fuerteContra.equals(pokemonContrario.getTipo())){
+            this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase()+20);
+            pokemonContrario.getHabilidad().setAtaqueBase(pokemonContrario.getHabilidad().getAtaqueBase()-20);
+        }else if(pokemonContrario.getFuerteContra().equals(this.tipo)){
+            this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase()-20);
+            pokemonContrario.getHabilidad().setAtaqueBase(pokemonContrario.getHabilidad().getAtaqueBase()+20);
+        }else{
 
+        }
 
+        do {
+            if(this.velocidad >= pokemonContrario.velocidad) {
+                //Empezar
+                pokemonContrario.setHp(pokemonContrario.getHp()-this.habilidad.getAtaqueBase());
+                if(pokemonContrario.getHp() <= 0){
+                    return true;
+                }else{
+                    this.hp -= pokemonContrario.getHabilidad().getAtaqueBase();
+                    if(this.hp <= 0){
+                        System.out.println("Vuelve a intentarlo");
+                        return false;
+                    }
+                }
+            }else{
+                //Empieza el opuesto
+                this.hp -= pokemonContrario.getHabilidad().getAtaqueBase();
+                if(this.hp <= 0) {
+                    return true;
+                }else{
+                    pokemonContrario.setHp(pokemonContrario.getHp()-this.habilidad.getAtaqueBase());
+                    if(pokemonContrario.getHp() <= 0){
+                        return false;
+                    }
+                }
+            }
+        }while (true);
 
-
-
-        return false;
     }
 
     @Override
