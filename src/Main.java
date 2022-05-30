@@ -69,7 +69,7 @@ public class Main implements UtilidadesInterfce{
                 debilyFuerte [1] = "Roca";
         }
 
-        return new String[2];
+        return debilyFuerte;
     }
 
     @Override
