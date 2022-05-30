@@ -53,6 +53,8 @@ public class Main implements UtilidadesInterfce{
 
     @Override
     public String[] debilYfuerte(String tipo) {
+        String [] debilYfuerte = new String[2];
+
         return new String[0];
     }
 
