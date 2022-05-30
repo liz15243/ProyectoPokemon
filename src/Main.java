@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main implements UtilidadesInterfce{
@@ -18,6 +19,8 @@ public class Main implements UtilidadesInterfce{
     @Override
     public void tiempoJugado(long tiempoInicial, long tiempoFinal) {
         tiempoInicial= System.currentTimeMillis();
+        tiempoFinal = System.currentTimeMillis();
+        System.out.println(tiempoFinal-tiempoInicial);
 
     }
 
@@ -53,13 +56,34 @@ public class Main implements UtilidadesInterfce{
 
     @Override
     public String[] debilYfuerte(String tipo) {
-        String [] debilYfuerte = new String[2];
 
-        return new String[0];
+
+        return new String[2];
     }
 
     @Override
     public String[] nombresPokemones(String tipo) {
-        return new String[0];
+        String [] banco = new String [4];
+        switch (tipo){
+            case ("Agua"):
+                banco [0] = "Squirtle";
+                banco [1] = "Magicarp";
+                banco [2] = "Trucha";
+                banco [3] = "Pez";
+                break;
+            case ("Fuego"):
+                banco [0] = "Dragonite";
+                banco [1] = "Arcanine";
+                banco [2] = "Magby";
+                banco [3] = "Carkol";
+                break;
+            case ("Planta"):
+                banco [0] = "Oddish";
+                banco [1] = "Chikorita";
+                banco [2] = "Treecko";
+                banco [3] = "Ludicolo";
+                break;
+        }
+        return banco;
     }
 }
