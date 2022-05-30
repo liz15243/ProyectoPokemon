@@ -56,7 +56,18 @@ public class Main implements UtilidadesInterfce{
 
     @Override
     public String[] debilYfuerte(String tipo) {
-
+        String [] debilyFuerte = new String [2];
+        switch (tipo){
+            case ("Agua"):
+                debilyFuerte [0] = "Electrico";
+                debilyFuerte [1] = "Fuego";
+            case ("Fuego"):
+                debilyFuerte [0] = "Agua";
+                debilyFuerte [1] = "Bicho";
+            case ("Planta"):
+                debilyFuerte [0] = "Fuego";
+                debilyFuerte [1] = "Roca";
+        }
 
         return new String[2];
     }
