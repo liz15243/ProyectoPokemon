@@ -72,7 +72,7 @@ public class Pokemon extends Personaje {
         this.velocidad = velocidad;
     }
 
-    public Pokemon(String nombre, int nivel, char genero, String tipo, Habilidad habilidad, int hp, boolean esLegendario, String debilContra, String fuerteContra, int fuerza, int velocidad) {
+    public Pokemon(String nombre, int nivel, char genero, String tipo, Habilidad habilidad, int hp, boolean esLegendario, String debilContra, String fuerteContra) {
         super(nombre, nivel, genero);
         this.tipo = tipo;
         this.habilidad = habilidad;
