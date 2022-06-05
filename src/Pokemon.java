@@ -54,7 +54,7 @@ public class Pokemon {
         this.fuerteContra = fuerteContra;
     }
 
-    public Pokemon(String tipo, Habilidad habilidad, int hp, boolean esLegendario, String debilContra, String fuerteContra) {
+    public Pokemon(String tipo, int nivel, char genero, String s, Habilidad habilidad, int hp, boolean esLegendario, String debilContra, String fuerteContra) {
         this.tipo = tipo;
         this.habilidad = habilidad;
         this.hp = hp;
