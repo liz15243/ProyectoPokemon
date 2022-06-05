@@ -5,6 +5,7 @@ public class Pokemon {
     private boolean esLegendario;
     private String debilContra;
     private String fuerteContra;
+    private int velocidad;
 
     public String getTipo() {
         return tipo;
@@ -54,12 +55,60 @@ public class Pokemon {
         this.fuerteContra = fuerteContra;
     }
 
-    public Pokemon(String tipo, int nivel, char genero, String s, Habilidad habilidad, int hp, boolean esLegendario, String debilContra, String fuerteContra) {
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public Pokemon(String tipo, Habilidad habilidad, int hp, boolean esLegendario, String debilContra, String fuerteContra, int velocidad) {
         this.tipo = tipo;
         this.habilidad = habilidad;
         this.hp = hp;
         this.esLegendario = esLegendario;
         this.debilContra = debilContra;
         this.fuerteContra = fuerteContra;
+        this.velocidad = velocidad;
+    }
+
+    public boolean pelear(Pokemon pokemonContrario) {
+        if(this.fuerteContra.equals(pokemonContrario.getTipo())){
+            this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase()+20);
+            pokemonContrario.getHabilidad().setAtaqueBase(pokemonContrario.getHabilidad().getAtaqueBase()-20);
+        }else if(pokemonContrario.getFuerteContra().equals(this.tipo)){
+            this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase()-20);
+            pokemonContrario.getHabilidad().setAtaqueBase(pokemonContrario.getHabilidad().getAtaqueBase()+20);
+        }else{
+
+        }
+
+        do {
+            if(this.velocidad >= pokemonContrario.velocidad) {
+                //Empezar
+                pokemonContrario.setHp(pokemonContrario.getHp()-this.habilidad.getAtaqueBase());
+                if(pokemonContrario.getHp() <= 0){
+                    return true;
+                }else{
+                    this.hp -= pokemonContrario.getHabilidad().getAtaqueBase();
+                    if(this.hp <= 0){
+                        System.out.println("Vuelve a intentarlo");
+                        return false;
+                    }
+                }
+            }else{
+                //Empieza el opuesto
+                this.hp -= pokemonContrario.getHabilidad().getAtaqueBase();
+                if(this.hp <= 0) {
+                    return true;
+                }else{
+                    pokemonContrario.setHp(pokemonContrario.getHp()-this.habilidad.getAtaqueBase());
+                    if(pokemonContrario.getHp() <= 0){
+                        return false;
+                    }
+                }
+            }
+        }while (true);
     }
 }

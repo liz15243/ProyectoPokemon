@@ -145,5 +145,6 @@ public class Main implements UtilidadesInterface{
 
     Pocion pocion1 = new Pocion(300,100,"Pocion luz","Vida","Le quita vida al enemigo y te la un cuarta parte a ti",50);
     ArrayList<Objeto> objetos = new ArrayList<>();
+    
 
 }

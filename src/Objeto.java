@@ -1,4 +1,4 @@
-public class Objeto {
+public abstract class Objeto {
     // Costo
     // Cantidad
     // Nombre
@@ -47,5 +47,5 @@ public class Objeto {
         this.tipo = tipo;
     }
 
-    //esta es una prueba
+    public abstract boolean usar(Pokemon pokemon);
 }

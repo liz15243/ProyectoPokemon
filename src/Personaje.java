@@ -1,4 +1,4 @@
-public class Personaje {
+public abstract class Personaje {
     private String nombre;
     private int nivel;
     private char genero;
@@ -32,4 +32,5 @@ public class Personaje {
         this.nivel = nivel;
         this.genero = genero;
     }
+    public abstract boolean pelear(Pokemon pokemonContrario);
 }

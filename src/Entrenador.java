@@ -1,13 +1,10 @@
 import  java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Entrenador {
-    // Region - String
-    // PokemonMascota - Pokemon
-    // Torneos ganados - Int
-    // Pokedex - ArrayList<Pokemon>
-    // Mochila - ArrayList<Objeto>
+public class Entrenador extends Personaje{
+
     private String region;
     private Pokemon PokemonMascota;
     private int torneosGanados;
@@ -54,82 +51,98 @@ public class Entrenador {
         Mochila = mochila;
     }
 
-    public Entrenador(String region, Pokemon pokemonMascota, int torneosGanados, ArrayList<Pokemon> pokedex, ArrayList<Objeto> mochila) {
+    public Entrenador(String nombre, int nivel, char genero, String region, Pokemon pokemonMascota, int torneosGanados, ArrayList<Pokemon> pokedex, ArrayList<Objeto> mochila) {
+        super(nombre, nivel, genero);
         this.region = region;
         PokemonMascota = pokemonMascota;
         this.torneosGanados = torneosGanados;
         Pokedex = pokedex;
         Mochila = mochila;
     }
-
-    //pelear - Abstracto implementado
-    //escoger pokemon del pokedex
-
-    //si su HP es superior a 15
-    //escoger 2 fuertes y 1 debil aleatorios
-    //si no tiene fuertes, poner 3 aleaatorios
-    //arreglo de pokemones a usar en la pelea
-
-
-    //darle a escoger el pokemon al entrenador
-    //mostrar estadisticas del pokemon
-    //menu para pelear, curar, aumentar ataque o velocidad
-    //si escoge pelear
-    //llamar al metodo pelear del pokemon
-    //si escoge curar
-    //hay que validar si hay pocion/baya de curacion, usar
-    //si escoge +ataque
-    //hay que validar si hay pocion/baya de +ataque, usar
-    //si escoge velocidad
-    //hay que validar si hay pocion/baya de +velocidad, usar
-
-
-    //ganar metodo -> el entrenador opuesto ya no tienepokemones
-    //nivel 1 = 10 xp pokemon y entrenador
-    //nivel n = 10 xp * 1.5 pokemon y entrenador
-    //perder metodo -> yo me quedo sin pokemones
-
-    //TIRAR OBJETO
-    //mostrar los elementos de mochila
-   public void tirarObjeto(){
-       Scanner leer = new Scanner(System.in);
-      int indice = 1;
-      for(Objeto contenido : Mochila){
-          System.out.println( indice + " - ");
-          System.out.println(contenido);
-      }
-       //que el usuario escoja cual tirar
-       System.out.println(" Que deseas tirar");
-       int tirar= leer.nextInt();
-
-   }
-
-
-    //INTERCAMBIAR
-    public boolean intercambiar (int eleccion, boolean probabilidad){
-        //mostrar la pokedex
-        Scanner leer = new Scanner(System.in);
-        Random elegir = new Random();
+    public void mostrarPokedex(ArrayList<Pokemon> pokemones){
+        System.out.println("Los pokemones disponibles son:");
         int indice = 1;
-        for (Pokemon pokedex : Pokedex){
-            System.out.println( indice + " - " + pokedex);
+        for(Pokemon objeto : Pokedex){
+            System.out.println(indice + " - ");
+            System.out.println(objeto);
             indice++;
         }
+    }
 
-        //mostrar la pokedex del entrenador opuesto
-        //escogo el pokemon que quiero
-        System.out.println("¿Que Pokemon deseas intercambiar");
-        eleccion = leer.nextInt();
+    public void mostrarMochila(){
 
-        //y con random true o false acepta
-        probabilidad = elegir.nextInt(100)>60;
-        //si true
-        if (probabilidad){
+    }
 
+    @Override
+    public boolean pelear(Pokemon pokemonContrario) {
+        ArrayList<Pokemon> parapelear = new ArrayList<>();
+
+        System.out.println("Escoge 3 pokemones");
+        mostrarPokedex(Pokedex);
+        Scanner leer = new Scanner(System.in);
+        for(int i=0; i<3;i++){
+            System.out.println("Ingresa el pokemon");
+            try {
+                int indice = leer.nextInt();
+                parapelear.add(Pokedex.get(indice - 1));
+            }catch(InputMismatchException e){
+                System.out.println("Ingrese un numero");
+                leer.nextLine();
+                i--;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Ese pokemon no existe, ingrese uno ya existente");
+                i--;
+            }
         }
-        //get y add + remove
+
+        int respuesta=0;
+        do{
+            System.out.println("1 Pelear");
+            System.out.println("2 Usar Baya");
+            System.out.println("3 Huir");
+            respuesta= leer.nextInt();
+
+            if(parapelear.size()!=0){
+                if(respuesta==1){
+
+                    System.out.println("Escoge el pokemon para pelear");
+                    mostrarPokedex(parapelear);
+                    int eleccion=leer.nextInt();
+                    if(!parapelear.get(eleccion).pelear(pokemonContrario)){
+                        parapelear.remove(eleccion);
+                    }else{
+                        return true;
+                    }
+
+                }else if(respuesta==2){
+
+                    mostrarMochila();
+                    System.out.println("Escoge la baya o pocion para el pokemon");
+                    int eleccion= leer.nextInt();
+                    System.out.println("Escoge el pokemon para dar baya/pocion");
+                    mostrarPokedex(parapelear);
+                    getMochila().get(eleccion-1).usar(parapelear.get(leer.nextInt()));
+
+                }else{
+                    System.out.println("Huyendoooo ");
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }while(respuesta !=0);
 
         return false;
+    }
+
+    public boolean tirarObjeto (int indice) {
+        try {
+            Mochila.remove(indice);
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Ese objeto no existe");
+            return false;
+        }
     }
 
 
